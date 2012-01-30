@@ -446,6 +446,9 @@ function image_resize( $file, $max_w, $max_h, $crop = false, $suffix = null, $de
 	if ( !is_null($dest_path) and $_dest_path = realpath($dest_path) )
 		$dir = $_dest_path;
 	$destfilename = "{$dir}/{$name}-{$suffix}.{$ext}";
+	
+	//Set the interlace flag 
+	imageinterlace($newimage, apply_filters('image_interlace',false);
 
 	if ( IMAGETYPE_GIF == $orig_type ) {
 		if ( !imagegif( $newimage, $destfilename ) )
